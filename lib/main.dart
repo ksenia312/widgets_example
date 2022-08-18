@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
-import 'package:widgets_example/layout/layout.dart';
+import 'package:widgets_example/screens/layout.dart';
 import 'package:widgets_example/utils/theme.dart';
-
 
 void main() {
   runApp(const MyApp());

@@ -15,9 +15,9 @@ class Layout extends StatefulWidget {
 
 class _LayoutState extends State<Layout> {
   final List<NamedWidget> _screens = [
+    const Basics(),
     const Accessibility(),
     const Animations(),
-    const Basics()
   ];
   int? _screenIndex = 0;
 

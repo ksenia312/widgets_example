@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:widgets_example/utils/text.dart';
 import '../utils/sections.dart';
@@ -38,7 +37,10 @@ class _AccessibilityState extends State<Accessibility> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: const [
-              AppText(value: 'ExcludeSemantics'),
+              AppText(
+                value: 'ExcludeSemantics',
+                textType: TextType.large,
+              ),
               AppText(
                 value:
                     'Исключает поддерево из дерева семантики (что может быть полезно, если оно, например, полностью декоративно и не важно для пользователя).\n',

@@ -30,7 +30,10 @@ class _BasicsState extends State<Basics> {
           _sizedBoxColumnCenter(),
           _row(),
           _rowCenter(),
-          _rowSizedBoxCenter()
+          _rowSizedBoxCenter(),
+          _placeholder(),
+          _placeholderColumn(),
+          _placeholderRow()
         ],
       );
 
@@ -272,6 +275,58 @@ class _BasicsState extends State<Basics> {
                       dark: false,
                     ),
                   ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+
+  _placeholder() => const HeadlineSection(
+        title: 'Placeholder',
+        description:
+            'Виджет, который рисует поле, представляющее собой место, куда однажды будут добавлены другие виджеты.Этот виджет полезен во время разработки, чтобы указать, что интерфейс еще не завершен.',
+      );
+
+  _placeholderColumn() => Section(
+        child: Column(
+          children: [
+            const AppText(
+                value:
+                    'Я Placeholder, я рисую крестик. По умолчанию размер заполнителя соответствует размеру его контейнера. Если заполнитель находится в неограниченном пространстве, он будет иметь размер в соответствии с заданными значениями fallbackWidth и fallbackHeight.'),
+            const AppText(
+                value:
+                    '\nЗаданы оба параметра. Применяется только высота, так как в колонке неограничена только высота. Наша колонка рисуется по ширине экрана, и эта ширина и так ограничена, поэтому заданная ширина игнорируется, она не имеет приоритет.\n'),
+            Placeholder(
+              color: purple800,
+              fallbackHeight: 150,
+              fallbackWidth: 150,
+            ),
+          ],
+        ),
+      );
+
+  _placeholderRow() => Section(
+        child: SizedBox(
+          height: 400,
+          child: Row(
+            children: [
+              const Expanded(
+                child: AppText(
+                    textType: TextType.large,
+                    value: 'Place-holder. Я в строке высотой 400.'),
+              ),
+              const Expanded(
+                child: AppText(
+                    value:
+                        'Заданы оба параметра. Применяется только ширина, так как в строке неограничена только ширина. Наша строка рисуется по заданной высоте, и эта высота и так ограничена, поэтому заданная высота игнорируется, она не имеет приоритет.'),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Placeholder(
+                  color: purple800,
+                  fallbackHeight: 150,
+                  fallbackWidth: 150,
                 ),
               ),
             ],

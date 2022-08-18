@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:widgets_example/utils/text.dart';
+
+import 'colors.dart';
 
 class Section extends StatelessWidget {
   final Widget? child;
@@ -28,16 +31,39 @@ class Section extends StatelessWidget {
 
 class SectionDecoration {
   static BoxDecoration basic({bool colored = false}) => BoxDecoration(
-        color: colored ? Colors.purple.shade900 : Color(0xFFF3E8F5),
-        borderRadius: BorderRadius.all(const Radius.circular(10)),
-        //border: colored
-        //? Border.all(color: const Color(0xFF945DD7))
-        //: Border.all(color: Colors.purpleAccent),
-       boxShadow: const [
-          BoxShadow(
-              blurRadius: 4,
-              color: Colors.black87,
-              offset: Offset(0, 2))
+        color: colored ? purple900 : white,
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
+        boxShadow: const [
+          BoxShadow(blurRadius: 4, color: Colors.black87, offset: Offset(0, 2))
         ],
       );
+}
+
+class HeadlineSection extends StatelessWidget {
+  final String title;
+  final String description;
+
+  const HeadlineSection(
+      {Key? key, required this.title, required this.description})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Section(
+      colored: true,
+      child: Column(
+        children: [
+          AppText(
+            value: title,
+            textType: TextType.large,
+            dark: false,
+          ),
+          AppText(
+            value: description,
+            dark: false,
+          )
+        ],
+      ),
+    );
+  }
 }
