@@ -1,4 +1,4 @@
-# widgets_example
+### Практика верстки, личная документация по разделам
 
 A new Flutter project.
 
