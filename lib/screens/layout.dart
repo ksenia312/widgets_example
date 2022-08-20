@@ -4,6 +4,7 @@ import 'package:widgets_example/utils/named_widget.dart';
 
 import 'accessibility.dart';
 import 'animations.dart';
+import 'assets.dart';
 import 'basics.dart';
 
 class Layout extends StatefulWidget {
@@ -18,6 +19,7 @@ class _LayoutState extends State<Layout> {
     const Basics(),
     const Accessibility(),
     const Animations(),
+    const Assets()
   ];
   int? _screenIndex = 0;
 
@@ -49,19 +51,16 @@ class _LayoutState extends State<Layout> {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 8.0),
-        child: Center(
-          child: AnimatedSwitcher(
-            child: _screens.elementAt(_screenIndex ?? 0),
-            duration: const Duration(milliseconds: 400),
-            transitionBuilder: (Widget child, Animation<double> animation) {
-              return FadeTransition(
-                opacity: animation,
-                child: child,
-              );
-            },
-          ),
+      body: Center(
+        child: AnimatedSwitcher(
+          child: _screens.elementAt(_screenIndex ?? 0),
+          duration: const Duration(milliseconds: 400),
+          transitionBuilder: (Widget child, Animation<double> animation) {
+            return FadeTransition(
+              opacity: animation,
+              child: child,
+            );
+          },
         ),
       ),
     );

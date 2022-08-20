@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class NamedWidget extends StatefulWidget {
-  String get name => 'name';
-
   const NamedWidget({Key? key}) : super(key: key);
+
+  String get name => '';
 
   @override
   State<NamedWidget> createState() => _NamedWidgetState();

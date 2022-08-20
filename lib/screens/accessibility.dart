@@ -88,6 +88,7 @@ class _SemanticsExampleState extends State<SemanticsExample> {
                   child: const AppText(
                     value: 'OK',
                     textType: TextType.small,
+                    dark: false,
                   ),
                   onPressed: () => setState(() {
                     _showCard = false;

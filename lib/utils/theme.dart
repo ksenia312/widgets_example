@@ -22,10 +22,11 @@ class AppTheme {
               side: MaterialStateProperty.all<BorderSide?>(
                   BorderSide(color: purple900))),
         ),
-        appBarTheme: const AppBarTheme(
+        appBarTheme:  const AppBarTheme(
             toolbarHeight: 70,
             backgroundColor: surface,
             foregroundColor: white,
+            iconTheme: IconThemeData(color: white),
             elevation: 10,
             shadowColor: Colors.black,
             centerTitle: true),
