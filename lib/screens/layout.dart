@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widgets_example/screens/cupertino.dart';
 import 'package:widgets_example/utils/colors.dart';
 import 'package:widgets_example/utils/named_widget.dart';
 
@@ -19,7 +20,8 @@ class _LayoutState extends State<Layout> {
     const Basics(),
     const Accessibility(),
     const Animations(),
-    const Assets()
+    const Assets(),
+    const Cupertino()
   ];
   int? _screenIndex = 0;
 
@@ -54,10 +56,11 @@ class _LayoutState extends State<Layout> {
       body: Center(
         child: AnimatedSwitcher(
           child: _screens.elementAt(_screenIndex ?? 0),
-          duration: const Duration(milliseconds: 400),
+          duration: const Duration(milliseconds: 700),
+          switchInCurve: Curves.fastOutSlowIn,
           transitionBuilder: (Widget child, Animation<double> animation) {
-            return FadeTransition(
-              opacity: animation,
+            return ScaleTransition(
+              scale: animation,
               child: child,
             );
           },

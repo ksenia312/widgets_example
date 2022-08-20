@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:widgets_example/utils/colors.dart';
 import 'package:widgets_example/utils/named_widget.dart';
@@ -13,7 +11,7 @@ class Assets extends NamedWidget {
   const Assets({Key? key}) : super(key: key);
 
   @override
-  String get name => 'Assets, images, and icon widgets';
+  String get name => 'Assets & Images & Icons';
 
   @override
   State<Assets> createState() => _AssetsState();
