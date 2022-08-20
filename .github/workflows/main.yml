@@ -1,12 +1,12 @@
 on:
   push:
-   tags:
-     - release-v*
+    tags:
+      - release-v*
 
-name: Release Apps
+name: Release App
 jobs:
   build:
-    name: Release Apps
+    name: Release App
     runs-on: ubuntu-latest
     steps:
       - name: Export Release Timestamp
@@ -26,7 +26,7 @@ jobs:
         run: flutter test
       - name: Build Android App
         run: flutter build apk --split-per-abi
-      - name: Release Apps
+      - name: Release App
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ env.APP_VERSION }}
