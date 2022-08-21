@@ -59,9 +59,9 @@ flutter:
   fonts:
     - family: Monospace
       fonts:
-        - asset: assets/monospace.medium.ttf
+        - asset: assets/DankMono-Regular.otf
 
-  # The following line ensures that the Material Icons font is
+  # The following line ensures that the Material Icons' font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true

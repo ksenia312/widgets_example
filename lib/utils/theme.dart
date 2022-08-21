@@ -9,7 +9,7 @@ class AppTheme {
         scaffoldBackgroundColor: const Color(0xFFBA7AFF),
         textTheme: TextTheme(
           bodySmall: TextStyle(
-              color: purple800, fontSize: 12, fontWeight: FontWeight.w500),
+              color: purple900, fontSize: 12, fontWeight: FontWeight.w500),
           bodyMedium: TextStyle(
               color: purple800, fontSize: 14, fontWeight: FontWeight.w500),
           bodyLarge: TextStyle(

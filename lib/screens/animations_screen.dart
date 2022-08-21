@@ -2,21 +2,21 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:widgets_example/utils/colors.dart';
-import 'package:widgets_example/utils/named_widget.dart';
-import 'package:widgets_example/utils/sections.dart';
-import 'package:widgets_example/utils/text.dart';
+import 'package:widgets_example/utils/title_widget.dart';
+import 'package:widgets_example/widgets/section.dart';
+import 'package:widgets_example/widgets/text.dart';
 
-class Animations extends NamedWidget {
+class AnimationsScreen extends TitleWidget {
   @override
-  String get name => 'Animations';
+  String get title => 'Animations';
 
-  const Animations({Key? key}) : super(key: key);
+  const AnimationsScreen({Key? key}) : super(key: key);
 
   @override
-  State<Animations> createState() => _AnimationsState();
+  State<AnimationsScreen> createState() => _AnimationsState();
 }
 
-class _AnimationsState extends State<Animations> with TickerProviderStateMixin {
+class _AnimationsState extends State<AnimationsScreen> with TickerProviderStateMixin {
   int _animatedAlignPosition = 0;
   bool _animatedCrossFadeFirst = true;
   bool _animatedModalBarrierShow = false;
@@ -81,16 +81,16 @@ class _AnimationsState extends State<Animations> with TickerProviderStateMixin {
     );
   }
 
-  get _annotation => const Section(
+  get _annotation => const AppSection(
         child: AppText(value: 'Только анимации, которые я редко использовала'),
       );
 
-  get _animatedAlign => const HeadlineSection(
+  get _animatedAlign => const AppHeadlineSection(
       title: 'AnimatedAlign',
       description:
           'Виджет, с помощью которого можно менять положение объекта пр изменении зависимости');
 
-  get _animatedAlignExample => Section(
+  get _animatedAlignExample => AppSection(
         child: Column(
           children: [
             Container(
@@ -133,12 +133,12 @@ class _AnimationsState extends State<Animations> with TickerProviderStateMixin {
     }
   }
 
-  get _animatedCrossFade => const HeadlineSection(
+  get _animatedCrossFade => const AppHeadlineSection(
       title: 'AnimatedCrossFade',
       description:
           'Виджет, который переливается между двумя заданными дочерними элементами и анимирует себя между их размерами.');
 
-  get _animatedCrossFadeExample => Section(
+  get _animatedCrossFadeExample => AppSection(
         child: Column(
           children: [
             AnimatedCrossFade(
@@ -180,13 +180,13 @@ class _AnimationsState extends State<Animations> with TickerProviderStateMixin {
         ),
       );
 
-  get _animatedModalBarrier => const HeadlineSection(
+  get _animatedModalBarrier => const AppHeadlineSection(
         title: 'AnimatedModalBarrier',
         description:
             'Виджет, который не позволяет пользователю взаимодействовать с виджетами позади себя, и может быть настроен на анимированное значение цвета.',
       );
 
-  get _animatedModalBarrierExample => Section(
+  get _animatedModalBarrierExample => AppSection(
         child: SizedBox(
           height: 200,
           child: Stack(alignment: Alignment.topCenter, children: [
@@ -221,7 +221,7 @@ class _AnimationsState extends State<Animations> with TickerProviderStateMixin {
   get _modal => SizedBox(
         height: 130,
         width: 250,
-        child: Section(
+        child: AppSection(
           child: Column(
             children: [
               const AppText(
@@ -245,12 +245,12 @@ class _AnimationsState extends State<Animations> with TickerProviderStateMixin {
   _visibility({required Widget child}) =>
       Visibility(visible: _animatedModalBarrierShow, child: child);
 
-  get _animatedPhysicalModel => const HeadlineSection(
+  get _animatedPhysicalModel => const AppHeadlineSection(
       title: 'AnimatedPhysicalModel',
       description:
           'Анимированная версия PhysicalModel. Анимируются borderRadius и elevation. Цвет анимируется, если установлено свойство animateColor. В противном случае цвет изменяется сразу после начала анимации для двух других свойств. Это позволяет анимировать цвет независимо (например, потому что он управляется анимационной темой). Форма не анимируется.');
 
-  get _animatedPhysicalModelExample => Section(
+  get _animatedPhysicalModelExample => AppSection(
         child: Column(
           children: [
             SizedBox(
@@ -309,12 +309,12 @@ class _AnimationsState extends State<Animations> with TickerProviderStateMixin {
             duration: const Duration(seconds: 1)),
       );
 
-  get _animatedWidget => const HeadlineSection(
+  get _animatedWidget => const AppHeadlineSection(
       title: 'AnimatedWidget',
       description:
           'Виджет, который перестраивается при изменении значения заданного Listenable. AnimatedWidget чаще всего используется с объектами Animation, которые являются прослушиваемыми, но его можно использовать с любыми прослушиваемыми, включая ChangeNotifier и ValueNotifier. AnimatedWidget наиболее полезен для виджетов, которые в других случаях не имеют состояния. Чтобы использовать AnimatedWidget, просто создайте его подкласс и реализуйте функцию build.');
 
-  get _animatedWidgetExample => Section(
+  get _animatedWidgetExample => AppSection(
           child: Column(
         children: [
           const AppText(
@@ -328,7 +328,7 @@ class _AnimationsState extends State<Animations> with TickerProviderStateMixin {
         ],
       ));
 
-  get _decoratedBoxTransition => const HeadlineSection(
+  get _decoratedBoxTransition => const AppHeadlineSection(
       title: 'DecoratedBoxTransition',
       description:
           'Анимированная версия DecoratedBox, которая анимирует различные свойства его Decoration. Анимации Tween, конечно, самые загадочные. \nИх отличие от Animation - они задаются объектом Tween и контроллером. Чтобы ее оживить, передается \ndecoration:_decorationTween.animate(_tweenController)\nВ Animation же обычно к анимации привязывается ее контроллер при инициализации.');
@@ -352,7 +352,7 @@ class _AnimationsState extends State<Animations> with TickerProviderStateMixin {
         ),
       );
 
-  get _decoratedBoxTransitionExample => Section(
+  get _decoratedBoxTransitionExample => AppSection(
         child: DecoratedBoxTransition(
           decoration: _decorationTween.animate(_tweenController),
           child: Center(
@@ -372,12 +372,12 @@ class _AnimationsState extends State<Animations> with TickerProviderStateMixin {
         ),
       );
 
-  get _hero => const HeadlineSection(
+  get _hero => const AppHeadlineSection(
       title: 'Hero',
       description:
           'Виджет, который помечает своего ребенка как кандидата на анимацию Hero.\n\n * Пример анимации Hero: на экране отображается список миниатюр, представляющих товары на продажу. При выборе товара он перелетает на новый экран, содержащий более подробную информацию и кнопку "Купить". Перемещение изображения с одного экрана на другой называется во Flutter анимацией Hero, хотя это же движение иногда называют переходом от одного элемента к другому.');
 
-  get _heroExample => Section(
+  get _heroExample => AppSection(
         child: Column(
           children: [
             Hero(
@@ -421,7 +421,7 @@ class _AnimationsState extends State<Animations> with TickerProviderStateMixin {
           body: Center(
             child: SizedBox(
               height: 300,
-              child: Section(
+              child: AppSection(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -443,7 +443,7 @@ class _AnimationsState extends State<Animations> with TickerProviderStateMixin {
     );
   }
 
-  get _conclusion => const Section(
+  get _conclusion => const AppSection(
           child: AppText(
         value:
             'Анимации бывают разные. \nЕсли окончание Transition - он хочет в качестве параметра получить анимацию значения. \nЕсли начало - Animated, то хочет получить статическое значение (меняющееся по зависимостям). \nТакже анимации можем задать по-разному, простые - CurvedAnimation, посложнее - Tween. ',

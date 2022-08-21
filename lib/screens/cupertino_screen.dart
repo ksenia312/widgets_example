@@ -1,21 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:widgets_example/utils/colors.dart';
-import 'package:widgets_example/utils/named_widget.dart';
-import 'package:widgets_example/utils/sections.dart';
-import 'package:widgets_example/utils/text.dart';
+import 'package:widgets_example/utils/title_widget.dart';
+import 'package:widgets_example/widgets/section.dart';
+import 'package:widgets_example/widgets/text.dart';
 
-class Cupertino extends NamedWidget {
-  const Cupertino({Key? key}) : super(key: key);
-
-  @override
-  String get name => 'Cupertino';
+class CupertinoScreen extends TitleWidget {
+  const CupertinoScreen({Key? key}) : super(key: key);
 
   @override
-  State<Cupertino> createState() => _CupertinoState();
+  String get title => 'Cupertino';
+
+  @override
+  State<CupertinoScreen> createState() => _CupertinoState();
 }
 
-class _CupertinoState extends State<Cupertino> {
+class _CupertinoState extends State<CupertinoScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,15 +40,15 @@ class _CupertinoState extends State<Cupertino> {
     );
   }
 
-  get _annotation => const Section(
+  get _annotation => const AppSection(
         child: CupertinoTextField(
             placeholder: 'Добро пожаловать в мой Iphone 28', enabled: false),
       );
 
-  get _cupertinoActionSheet => const HeadlineSection(
+  get _cupertinoActionSheet => const AppHeadlineSection(
       title: 'CupertinoActionSheet', description: 'Лист действий в стиле iOS.');
 
-  get _cupertinoActionSheetExample => Section(
+  get _cupertinoActionSheetExample => AppSection(
         child: CupertinoButton.filled(
           onPressed: _showCupertinoActionSheet,
           child: const Text(
@@ -87,20 +87,20 @@ class _CupertinoState extends State<Cupertino> {
     );
   }
 
-  get _cupertinoActivityIndicator => const HeadlineSection(
+  get _cupertinoActivityIndicator => const AppHeadlineSection(
       title: 'CupertinoActivityIndicator ',
       description:
           'Индикатор активности в стиле iOS, вращающийся по часовой стрелке.');
 
-  get _cupertinoActivityIndicatorExample => const Section(
+  get _cupertinoActivityIndicatorExample => const AppSection(
         child: CupertinoActivityIndicator(radius: 20),
       );
 
-  get _cupertinoAlertDialog => const HeadlineSection(
+  get _cupertinoAlertDialog => const AppHeadlineSection(
       title: 'CupertinoAlertDialog',
       description: 'Диалоговое окно оповещения в стиле iOS.');
 
-  get _cupertinoAlertDialogExample => Section(
+  get _cupertinoAlertDialogExample => AppSection(
           child: Column(
         children: [
           const AppText(
@@ -168,12 +168,12 @@ class _CupertinoState extends State<Cupertino> {
     );
   }
 
-  get _cupertinoButton => const HeadlineSection(
+  get _cupertinoButton => const AppHeadlineSection(
       title: 'CupertinoButton',
       description:
           'Кнопка в стиле iOS. Принимает текст или значок, который исчезает и появляется при прикосновении. По желанию может иметь фон. По умолчанию отступ составляет 16,0 пикселей. При использовании CupertinoButton внутри родительского элемента фиксированной высоты, например CupertinoNavigationBar, следует использовать меньший или даже EdgeInsets.zero, чтобы предотвратить обрезание более крупных дочерних виджетов.');
 
-  get _cupertinoButtonExample => Section(
+  get _cupertinoButtonExample => AppSection(
         child: Row(
           children: [
             Expanded(
@@ -217,12 +217,12 @@ class _CupertinoState extends State<Cupertino> {
         ),
       );
 
-  get _cupertinoContextMenu => const HeadlineSection(
+  get _cupertinoContextMenu => const AppHeadlineSection(
       title: 'CupertinoContextMenu',
       description:
           'Полноэкранный модальный маршрут, который открывается при длительном нажатии на дочернее меню. При открытии CupertinoContextMenu показывает дочерний элемент или виджет, возвращаемый previewBuilder, если он задан, в большом полноэкранном Overlay со списком кнопок, заданных действиями. Ребенок/превью помещается в расширенный виджет, так что он будет расти и заполнять оверлей, если его размер не ограничен.');
 
-  get _cupertinoContextMenuExample => Section(
+  get _cupertinoContextMenuExample => AppSection(
         child: SizedBox(
           width: 100,
           height: 100,
@@ -242,7 +242,7 @@ class _CupertinoState extends State<Cupertino> {
               ),
             ],
             child: Center(
-              child: Section(
+              child: AppSection(
                 child: Row(
                   children: [
                     const Expanded(
@@ -279,12 +279,12 @@ class _CupertinoState extends State<Cupertino> {
         ),
       );
 
-  get _cupertinoNavigationBar => const HeadlineSection(
+  get _cupertinoNavigationBar => const AppHeadlineSection(
       title: 'CupertinoNavigationBar',
       description:
           'An iOS-styled navigation bar. The navigation bar is a toolbar that minimally consists of a widget, normally a page title, in the middle of the toolbar.');
 
-  get _cupertinoNavigationBarExample => Section(
+  get _cupertinoNavigationBarExample => AppSection(
         child: CupertinoButton.filled(
             child: const Text(
               'Перейти на страницу с CupertinoNavigationBar',
@@ -303,7 +303,7 @@ class _CupertinoState extends State<Cupertino> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
-                        HeadlineSection(
+                        AppHeadlineSection(
                             title: 'Тут есть бар в стиле IOS',
                             description: 'как дела'),
                       ],
@@ -313,5 +313,5 @@ class _CupertinoState extends State<Cupertino> {
               );
             }),
       );
-  
+
 }

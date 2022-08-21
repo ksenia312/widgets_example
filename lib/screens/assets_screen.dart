@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_example/utils/colors.dart';
-import 'package:widgets_example/utils/named_widget.dart';
-import 'package:widgets_example/utils/sections.dart';
+import 'package:widgets_example/utils/title_widget.dart';
+import 'package:widgets_example/widgets/section.dart';
 
 import 'dart:convert' show json;
 
-import 'package:widgets_example/utils/text.dart';
+import 'package:widgets_example/widgets/text.dart';
 
-class Assets extends NamedWidget {
-  const Assets({Key? key}) : super(key: key);
-
-  @override
-  String get name => 'Assets & Images & Icons';
+class AssetsScreen extends TitleWidget {
+  const AssetsScreen({Key? key}) : super(key: key);
 
   @override
-  State<Assets> createState() => _AssetsState();
+  String get title => 'Assets & Images & Icons';
+
+  @override
+  State<AssetsScreen> createState() => _AssetsState();
 }
 
-class _AssetsState extends State<Assets> {
+class _AssetsState extends State<AssetsScreen> {
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -32,12 +32,12 @@ class _AssetsState extends State<Assets> {
     );
   }
 
-  get _assetBundle => const HeadlineSection(
+  get _assetBundle => const AppHeadlineSection(
       title: 'AssetBundle / DefaultAssetBundle',
       description:
           'Набор ресурсов, используемых приложением. \n\nПакеты активов содержат ресурсы, такие как изображения и строки, которые могут быть использованы приложением. Доступ к этим ресурсам асинхронный, поэтому они могут быть прозрачно загружены по сети (например, из NetworkAssetBundle) или из локальной файловой системы без блокирования пользовательского интерфейса приложения.\n\nТакже есть rootBundle, но лучше использовать DefaultAssetBundle');
 
-  get _assetBundleExample => Section(
+  get _assetBundleExample => AppSection(
         child: Column(
           children: [
             const AppText(
@@ -111,13 +111,13 @@ class _AssetsState extends State<Assets> {
         ),
       );
 
-  get _icon => const HeadlineSection(
+  get _icon => const AppHeadlineSection(
         title: 'Icon',
         description:
             'Виджет графической иконки, нарисованный глифом из шрифта, описанного в IconData, например, в предопределенных Material Icons. Иконки не являются интерактивными. Для интерактивной иконки рассмотрите IconButton',
       );
 
-  get _iconExample => Section(
+  get _iconExample => AppSection(
           child: Column(
         children: [
           _iconsRow(
@@ -153,11 +153,11 @@ class _AssetsState extends State<Assets> {
         ],
       );
 
-  get _image => const HeadlineSection(
+  get _image => const AppHeadlineSection(
       title: 'Image', description: 'Виджет, отображающий изображение.');
 
   get _imageExample {
-    return Section(
+    return AppSection(
       child: Column(
         children: [
           _imageRow(Image.asset('assets/crocodile.jpg'),

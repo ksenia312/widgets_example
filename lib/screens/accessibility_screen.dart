@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:widgets_example/utils/text.dart';
-import '../utils/sections.dart';
-import '../utils/named_widget.dart';
+import 'package:widgets_example/widgets/text.dart';
+import '../widgets/section.dart';
+import '../utils/title_widget.dart';
 
-class Accessibility extends NamedWidget {
+class AccessibilityScreen extends TitleWidget {
   @override
-  String get name => 'Accessibility';
+  String get title => 'Accessibility';
 
-  const Accessibility({Key? key}) : super(key: key);
+  const AccessibilityScreen({Key? key}) : super(key: key);
 
   @override
-  State<Accessibility> createState() => _AccessibilityState();
+  State<AccessibilityScreen> createState() => _AccessibilityState();
 }
 
-class _AccessibilityState extends State<Accessibility> {
+class _AccessibilityState extends State<AccessibilityScreen> {
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Section(
+        const AppSection(
           colored: true,
           child: AppText(
             value: 'Доступность',
@@ -26,14 +26,14 @@ class _AccessibilityState extends State<Accessibility> {
             textType: TextType.large,
           ),
         ),
-        const Section(
+        const AppSection(
           colored: true,
           child: AppText(
               value:
                   'Семантика - это виджет, который аннотирует дерево виджетов описанием смысла виджетов. Используется инструментами доступности, поисковыми системами и другими программами семантического анализа для определения смысла приложения. Семантика - это мощный виджет, который добавляет "функции" дочернему виджету, например, устанавливает его в качестве заголовка, дает ему возможности "кнопки" и теги и т.д. ',
               dark: false),
         ),
-        Section(
+        AppSection(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: const [
@@ -51,7 +51,7 @@ class _AccessibilityState extends State<Accessibility> {
             ],
           ),
         ),
-        const Section(child: SemanticsExample()),
+        const AppSection(child: SemanticsExample()),
       ],
     );
   }

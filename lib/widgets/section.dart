@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:widgets_example/utils/text.dart';
+import 'package:widgets_example/utils/colors.dart';
+import 'package:widgets_example/widgets/text.dart';
 
-import 'colors.dart';
-
-class Section extends StatelessWidget {
+class AppSection extends StatelessWidget {
   final Widget? child;
   final bool expanded;
   final bool colored;
 
-  const Section(
+  const AppSection(
       {Key? key,
       required this.child,
       this.expanded = false,
@@ -17,20 +16,20 @@ class Section extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return expanded ? Expanded(child: _container()) : _container();
+    return expanded
+        ? Expanded(child: _decoratedContainer)
+        : _decoratedContainer;
   }
 
-  _container() => Container(
+  Container get _decoratedContainer => Container(
         margin: const EdgeInsets.only(top: 5, right: 5, left: 5),
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(15),
         width: double.infinity,
         child: child,
-        decoration: SectionDecoration.basic(colored: colored),
+        decoration: _sectionDecoration,
       );
-}
 
-class SectionDecoration {
-  static BoxDecoration basic({bool colored = false}) => BoxDecoration(
+  BoxDecoration get _sectionDecoration => BoxDecoration(
         color: colored ? purple900 : white,
         borderRadius: const BorderRadius.all(Radius.circular(10)),
         boxShadow: const [
@@ -39,17 +38,17 @@ class SectionDecoration {
       );
 }
 
-class HeadlineSection extends StatelessWidget {
+class AppHeadlineSection extends StatelessWidget {
   final String title;
   final String description;
 
-  const HeadlineSection(
+  const AppHeadlineSection(
       {Key? key, required this.title, required this.description})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Section(
+    return AppSection(
       colored: true,
       child: Column(
         children: [

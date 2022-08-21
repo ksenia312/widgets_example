@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:widgets_example/screens/cupertino.dart';
+import 'package:widgets_example/screens/cupertino_screen.dart';
+import 'package:widgets_example/screens/interaction_models_screen.dart';
 import 'package:widgets_example/utils/colors.dart';
-import 'package:widgets_example/utils/named_widget.dart';
+import 'package:widgets_example/utils/title_widget.dart';
 
-import 'accessibility.dart';
-import 'animations.dart';
-import 'assets.dart';
-import 'basics.dart';
+/*import 'accessibility_screen.dart';*/
+import 'animations_screen.dart';
+import 'assets_screen.dart';
+import 'basics_screen.dart';
+import 'input_screen.dart';
 
 class Layout extends StatefulWidget {
   const Layout({Key? key}) : super(key: key);
@@ -16,12 +18,14 @@ class Layout extends StatefulWidget {
 }
 
 class _LayoutState extends State<Layout> {
-  final List<NamedWidget> _screens = [
-    const Basics(),
-    const Accessibility(),
-    const Animations(),
-    const Assets(),
-    const Cupertino()
+  final List<TitleWidget> _screens = [
+    const BasicsScreen(),
+    /*const AccessibilityScreen(),*/
+    const AnimationsScreen(),
+    const AssetsScreen(),
+    const CupertinoScreen(),
+    const InputScreen(),
+    const InteractionModelScreen()
   ];
   int? _screenIndex = 0;
 
@@ -79,7 +83,7 @@ class _LayoutState extends State<Layout> {
 
   _getItems() => _screens
       .map((e) => DropdownMenuItem<int>(
-            child: Text(e.name),
+            child: Text(e.title),
             value: _screens.indexOf(e),
             alignment: Alignment.center,
           ))

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'colors.dart';
+import 'package:widgets_example/utils/colors.dart';
 
 enum TextType { small, medium, large, code }
 
@@ -64,7 +63,7 @@ class _AppTextState extends State<AppText> {
         widget.value,
         style: getThemeByType(widget.textType).copyWith(
             color: widget.dark ? purple900 : white,
-            fontWeight: FontWeight.w900,
+            fontWeight: FontWeight.w600,
             fontFamily: 'Monospace'),
         textAlign: TextAlign.start,
       );

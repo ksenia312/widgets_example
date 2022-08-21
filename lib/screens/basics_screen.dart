@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_example/utils/colors.dart';
-import 'package:widgets_example/utils/named_widget.dart';
-import 'package:widgets_example/utils/sections.dart';
-import 'package:widgets_example/utils/text.dart';
+import 'package:widgets_example/utils/title_widget.dart';
+import 'package:widgets_example/widgets/section.dart';
+import 'package:widgets_example/widgets/text.dart';
 
-class Basics extends NamedWidget {
+class BasicsScreen extends TitleWidget {
   @override
-  String get name => 'Basics';
+  String get title => 'Basics';
 
-  const Basics({Key? key}) : super(key: key);
+  const BasicsScreen({Key? key}) : super(key: key);
 
   @override
-  State<Basics> createState() => _BasicsState();
+  State<BasicsScreen> createState() => _BasicsState();
 }
 
-class _BasicsState extends State<Basics> {
+class _BasicsState extends State<BasicsScreen> {
   bool showCleanColumn = false;
 
   @override
@@ -37,7 +37,7 @@ class _BasicsState extends State<Basics> {
         ],
       );
 
-  _column() => Section(
+  _column() => AppSection(
         colored: true,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,7 +64,7 @@ class _BasicsState extends State<Basics> {
         ),
       );
 
-  _sizedBoxColumn() => Section(
+  _sizedBoxColumn() => AppSection(
         child: SizedBox(
           height: 200,
           child: Column(
@@ -92,7 +92,7 @@ class _BasicsState extends State<Basics> {
         ),
       );
 
-  _sizedBoxColumnCenter() => Section(
+  _sizedBoxColumnCenter() => AppSection(
         child: SizedBox(
           height: 300,
           child: Column(
@@ -121,7 +121,7 @@ class _BasicsState extends State<Basics> {
         ),
       );
 
-  _tryCleanColumnButton() => Section(
+  _tryCleanColumnButton() => AppSection(
           child: OutlinedButton(
         child: Text(showCleanColumn
             ? 'Вернуться к ListView'
@@ -184,7 +184,7 @@ class _BasicsState extends State<Basics> {
         ],
       );
 
-  _row() => Section(
+  _row() => AppSection(
         colored: true,
         child: Row(
           children: [
@@ -216,7 +216,7 @@ class _BasicsState extends State<Basics> {
         ),
       );
 
-  _rowCenter() => Section(
+  _rowCenter() => AppSection(
         child: Row(
           children: [
             const Expanded(
@@ -248,7 +248,7 @@ class _BasicsState extends State<Basics> {
         ),
       );
 
-  _rowSizedBoxCenter() => Section(
+  _rowSizedBoxCenter() => AppSection(
         child: SizedBox(
           height: 200,
           child: Row(
@@ -282,13 +282,13 @@ class _BasicsState extends State<Basics> {
         ),
       );
 
-  _placeholder() => const HeadlineSection(
+  _placeholder() => const AppHeadlineSection(
         title: 'Placeholder',
         description:
             'Виджет, который рисует поле, представляющее собой место, куда однажды будут добавлены другие виджеты.Этот виджет полезен во время разработки, чтобы указать, что интерфейс еще не завершен.',
       );
 
-  _placeholderColumn() => Section(
+  _placeholderColumn() => AppSection(
         child: Column(
           children: [
             const AppText(
@@ -306,7 +306,7 @@ class _BasicsState extends State<Basics> {
         ),
       );
 
-  _placeholderRow() => Section(
+  _placeholderRow() => AppSection(
         child: SizedBox(
           height: 400,
           child: Row(
