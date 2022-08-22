@@ -1,32 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:widgets_example/screens/cupertino_screen.dart';
-import 'package:widgets_example/screens/interaction_models_screen.dart';
+import 'package:widgets_example/screens/cupertino_screen/cupertino_screen.dart';
+import 'package:widgets_example/screens/interaction_models_screen/interaction_models_screen.dart';
 import 'package:widgets_example/utils/colors.dart';
 import 'package:widgets_example/utils/title_widget.dart';
 
-/*import 'accessibility_screen.dart';*/
-import 'animations_screen.dart';
-import 'assets_screen.dart';
-import 'basics_screen.dart';
-import 'input_screen.dart';
+import 'animations_screen/animations_screen.dart';
+import 'annotation_screen/annotation_screen.dart';
+import 'assets_screen/assets_screen.dart';
+import 'basics_screen/basics_screen.dart';
+import 'input_screen/input_screen.dart';
+import 'layout_screen/layout_screen.dart';
 
-class Layout extends StatefulWidget {
-  const Layout({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<Layout> createState() => _LayoutState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _LayoutState extends State<Layout> {
-  final List<TitleWidget> _screens = [
-    const BasicsScreen(),
-    /*const AccessibilityScreen(),*/
-    const AnimationsScreen(),
-    const AssetsScreen(),
-    const CupertinoScreen(),
-    const InputScreen(),
-    const InteractionModelScreen()
-  ];
+class _HomeScreenState extends State<HomeScreen> {
   int? _screenIndex = 0;
 
   void _onChanged(int? value) {
@@ -35,8 +27,20 @@ class _LayoutState extends State<Layout> {
     });
   }
 
+  Function(int) get setDropDownValue => _onChanged;
+
   @override
   Widget build(BuildContext context) {
+    final List<TitleWidget> _screens = [
+      AnnotationScreen(setDropDownValue: setDropDownValue),
+      const BasicsScreen(),
+      const AnimationsScreen(),
+      const AssetsScreen(),
+      const CupertinoScreen(),
+      const InputScreen(),
+      const InteractionModelScreen(),
+     /* const LayoutScreen()*/
+    ];
     return Scaffold(
       appBar: AppBar(
         title: Container(
@@ -46,7 +50,7 @@ class _LayoutState extends State<Layout> {
               borderRadius: BorderRadius.all(Radius.circular(10))),
           child: DropdownButton<int>(
             value: _screenIndex,
-            items: _getItems(),
+            items: _getItems(_screens),
             onChanged: _onChanged,
             alignment: Alignment.center,
             isExpanded: true,
@@ -81,10 +85,10 @@ class _LayoutState extends State<Layout> {
         color: purple900,
       );
 
-  _getItems() => _screens
+  _getItems(List<TitleWidget> screens) => screens
       .map((e) => DropdownMenuItem<int>(
             child: Text(e.title),
-            value: _screens.indexOf(e),
+            value: screens.indexOf(e),
             alignment: Alignment.center,
           ))
       .toList();

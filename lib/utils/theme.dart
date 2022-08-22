@@ -6,7 +6,7 @@ import 'colors.dart';
 class AppTheme {
   static ThemeData get data => ThemeData(
         brightness: Brightness.light,
-        scaffoldBackgroundColor: const Color(0xFFBA7AFF),
+        scaffoldBackgroundColor:scaffold,
         textTheme: TextTheme(
           bodySmall: TextStyle(
               color: purple900, fontSize: 12, fontWeight: FontWeight.w500),

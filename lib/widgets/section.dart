@@ -22,7 +22,7 @@ class AppSection extends StatelessWidget {
   }
 
   Container get _decoratedContainer => Container(
-        margin: const EdgeInsets.only(top: 5, right: 5, left: 5),
+        margin: const EdgeInsets.only(top: 8, right: 8, left: 8),
         padding: const EdgeInsets.all(15),
         width: double.infinity,
         child: child,
@@ -32,8 +32,11 @@ class AppSection extends StatelessWidget {
   BoxDecoration get _sectionDecoration => BoxDecoration(
         color: colored ? purple900 : white,
         borderRadius: const BorderRadius.all(Radius.circular(10)),
-        boxShadow: const [
-          BoxShadow(blurRadius: 4, color: Colors.black87, offset: Offset(0, 2))
+        boxShadow: [
+          BoxShadow(
+              blurRadius: 1,
+              color: Colors.purple.shade700,
+              offset: const Offset(0, 1))
         ],
       );
 }

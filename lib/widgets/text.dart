@@ -8,6 +8,7 @@ class AppText extends StatefulWidget {
   final TextType textType;
   final bool dark;
   final TextAlign textAlign;
+  final bool underlined;
 
   const AppText({
     Key? key,
@@ -15,6 +16,7 @@ class AppText extends StatefulWidget {
     this.textType = TextType.medium,
     this.dark = true,
     this.textAlign = TextAlign.center,
+    this.underlined = false,
   }) : super(key: key);
 
   @override
@@ -54,8 +56,9 @@ class _AppTextState extends State<AppText> {
 
   Text get _text => Text(
         widget.value,
-        style: getThemeByType(widget.textType)
-            .copyWith(color: widget.dark ? null : white),
+        style: getThemeByType(widget.textType).copyWith(
+            color: widget.dark ? null : white,
+            decoration: widget.underlined ? TextDecoration.underline : null),
         textAlign: widget.textAlign,
       );
 

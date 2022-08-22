@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:widgets_example/widgets/listview.dart';
 import 'package:widgets_example/widgets/text_field.dart';
 import 'package:widgets_example/utils/title_widget.dart';
 import 'package:widgets_example/utils/messenger.dart';
@@ -29,7 +30,7 @@ class _InputState extends State<InputScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return AppListView(
       children: [
         _autoComplete,
         _autoCompleteExample,

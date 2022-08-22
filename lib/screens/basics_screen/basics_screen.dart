@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_example/utils/colors.dart';
 import 'package:widgets_example/utils/title_widget.dart';
+import 'package:widgets_example/widgets/listview.dart';
 import 'package:widgets_example/widgets/section.dart';
 import 'package:widgets_example/widgets/text.dart';
 
@@ -19,121 +20,25 @@ class _BasicsState extends State<BasicsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return showCleanColumn ? _cleanColumn() : _mainListView();
+    return showCleanColumn ? _cleanColumn : _mainListView;
   }
 
-  _mainListView() => ListView(
+  get _mainListView => AppListView(
         children: [
-          _tryCleanColumnButton(),
-          _column(),
-          _sizedBoxColumn(),
-          _sizedBoxColumnCenter(),
-          _row(),
-          _rowCenter(),
-          _rowSizedBoxCenter(),
-          _placeholder(),
-          _placeholderColumn(),
-          _placeholderRow()
+          _redirectButton,
+          _column,
+          _sizedBoxColumn,
+          _sizedBoxColumnCenter,
+          _row,
+          _rowCenter,
+          _rowSizedBoxCenter,
+          _placeholder,
+          _placeholderColumn,
+          _placeholderRow
         ],
       );
 
-  _column() => AppSection(
-        colored: true,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const AppText(
-                value: 'Column', dark: false, textType: TextType.large),
-            Container(
-              color: white,
-              child: const AppText(value: 'Я в контейнере'),
-            ),
-            const AppText(
-                value:
-                    'Мы не можем использовать Expanded пока для Column не задана высота. Здесь установлен textAlign center и строк больше одной, поэтому CrossAxisAlignment.start не повлиял на этот блок',
-                dark: false),
-            Container(
-              color: white,
-              child: const AppText(
-                value:
-                    'Это строение вертикально в ряд. Здесь зададим textAlign start, чтобы текст тоже поехал',
-                textAlign: TextAlign.start,
-              ),
-            )
-          ],
-        ),
-      );
-
-  _sizedBoxColumn() => AppSection(
-        child: SizedBox(
-          height: 200,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              const AppText(
-                value: 'SizedBox( height: 200, child: Column )',
-                textType: TextType.large,
-              ),
-              Expanded(
-                child: Container(
-                  color: purple900,
-                  child: const AppText(
-                    value: 'Я в Expanded контейнере',
-                    dark: false,
-                  ),
-                ),
-              ),
-              const AppText(
-                value:
-                    '\nExpanded обозначает заполнение максимального доступного объема по главной оси. Ширина будет по контенту, если ее не задать.',
-              )
-            ],
-          ),
-        ),
-      );
-
-  _sizedBoxColumnCenter() => AppSection(
-        child: SizedBox(
-          height: 300,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              const AppText(
-                value: 'Column with Center',
-                textType: TextType.large,
-              ),
-              Expanded(
-                child: Container(
-                  color: purple900,
-                  child: const Center(
-                      child: AppText(
-                    value: 'Я в Expanded контейнере, и в Center',
-                    dark: false,
-                  )),
-                ),
-              ),
-              const AppText(
-                value:
-                    '\nВиджет Center используется для центрирования своего дочернего элемента внутри себя (как по вертикали, так и по горизонтали). Так как ему нужно центрировать текст внутри себя, он центрирует относительно всего доступного объема и по ширине, поэтому он стал больше. \n\nMainAxisAlignment.end игнорируется, потому что есть блок, заполняющий все пространство',
-              ),
-            ],
-          ),
-        ),
-      );
-
-  _tryCleanColumnButton() => AppSection(
-          child: OutlinedButton(
-        child: Text(showCleanColumn
-            ? 'Вернуться к ListView'
-            : 'Посмотреть Column без ListView'),
-        onPressed: () {
-          setState(() {
-            showCleanColumn = !showCleanColumn;
-          });
-        },
-      ));
-
-  _cleanColumn() => Column(
+  get _cleanColumn => Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(
@@ -180,11 +85,107 @@ class _BasicsState extends State<BasicsScreen> {
                           'Я внутри Expanded контейнера с flex=2. Я автоматически заполняю в 2 раза больше пространства, чем доступно автоматически заполнить остальным (при равном распределении контента)',
                     ),
                   ))),
-          _tryCleanColumnButton()
+          _redirectButton()
         ],
       );
 
-  _row() => AppSection(
+  get _redirectButton => AppSection(
+          child: OutlinedButton(
+        child: Text(showCleanColumn
+            ? 'Вернуться к ListView'
+            : 'Посмотреть Column без ListView'),
+        onPressed: () {
+          setState(() {
+            showCleanColumn = !showCleanColumn;
+          });
+        },
+      ));
+
+  get _column => AppSection(
+        colored: true,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const AppText(
+                value: 'Column', dark: false, textType: TextType.large),
+            Container(
+              color: white,
+              child: const AppText(value: 'Я в контейнере'),
+            ),
+            const AppText(
+                value:
+                    'Мы не можем использовать Expanded пока для Column не задана высота. Здесь установлен textAlign center и строк больше одной, поэтому CrossAxisAlignment.start не повлиял на этот блок',
+                dark: false),
+            Container(
+              color: white,
+              child: const AppText(
+                value:
+                    'Это строение вертикально в ряд. Здесь зададим textAlign start, чтобы текст тоже поехал',
+                textAlign: TextAlign.start,
+              ),
+            )
+          ],
+        ),
+      );
+
+  get _sizedBoxColumn => AppSection(
+        child: SizedBox(
+          height: 200,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const AppText(
+                value: 'SizedBox( height: 200, child: Column )',
+                textType: TextType.large,
+              ),
+              Expanded(
+                child: Container(
+                  color: purple900,
+                  child: const AppText(
+                    value: 'Я в Expanded контейнере',
+                    dark: false,
+                  ),
+                ),
+              ),
+              const AppText(
+                value:
+                    '\nExpanded обозначает заполнение максимального доступного объема по главной оси. Ширина будет по контенту, если ее не задать.',
+              )
+            ],
+          ),
+        ),
+      );
+
+  get _sizedBoxColumnCenter => AppSection(
+        child: SizedBox(
+          height: 300,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              const AppText(
+                value: 'Column with Center',
+                textType: TextType.large,
+              ),
+              Expanded(
+                child: Container(
+                  color: purple900,
+                  child: const Center(
+                      child: AppText(
+                    value: 'Я в Expanded контейнере, и в Center',
+                    dark: false,
+                  )),
+                ),
+              ),
+              const AppText(
+                value:
+                    '\nВиджет Center используется для центрирования своего дочернего элемента внутри себя (как по вертикали, так и по горизонтали). Так как ему нужно центрировать текст внутри себя, он центрирует относительно всего доступного объема и по ширине, поэтому он стал больше. \n\nMainAxisAlignment.end игнорируется, потому что есть блок, заполняющий все пространство',
+              ),
+            ],
+          ),
+        ),
+      );
+
+  get _row => AppSection(
         colored: true,
         child: Row(
           children: [
@@ -216,7 +217,7 @@ class _BasicsState extends State<BasicsScreen> {
         ),
       );
 
-  _rowCenter() => AppSection(
+  get _rowCenter => AppSection(
         child: Row(
           children: [
             const Expanded(
@@ -248,7 +249,7 @@ class _BasicsState extends State<BasicsScreen> {
         ),
       );
 
-  _rowSizedBoxCenter() => AppSection(
+  get _rowSizedBoxCenter => AppSection(
         child: SizedBox(
           height: 200,
           child: Row(
@@ -282,13 +283,13 @@ class _BasicsState extends State<BasicsScreen> {
         ),
       );
 
-  _placeholder() => const AppHeadlineSection(
+  get _placeholder => const AppHeadlineSection(
         title: 'Placeholder',
         description:
             'Виджет, который рисует поле, представляющее собой место, куда однажды будут добавлены другие виджеты.Этот виджет полезен во время разработки, чтобы указать, что интерфейс еще не завершен.',
       );
 
-  _placeholderColumn() => AppSection(
+  get _placeholderColumn => AppSection(
         child: Column(
           children: [
             const AppText(
@@ -306,7 +307,7 @@ class _BasicsState extends State<BasicsScreen> {
         ),
       );
 
-  _placeholderRow() => AppSection(
+  get _placeholderRow => AppSection(
         child: SizedBox(
           height: 400,
           child: Row(

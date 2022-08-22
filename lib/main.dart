@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:widgets_example/screens/layout.dart';
+import 'package:widgets_example/screens/home_screen.dart';
 import 'package:widgets_example/utils/theme.dart';
 
 void main() {
@@ -9,7 +9,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -32,17 +31,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return const Layout();
+    return const HomeScreen();
   }
-/*
-  _usersScreen() => const UsersScreen();
-
-  Widget _prepareLoginScreen() {
-    return BlocProvider(
-      create: (BuildContext context) {
-        return LoginBloc();
-      },
-      child: const LoginScreen(),
-    );
-  }*/
 }

@@ -4,8 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:widgets_example/utils/colors.dart';
 import 'package:widgets_example/utils/messenger.dart';
 import 'package:widgets_example/utils/title_widget.dart';
+import 'package:widgets_example/widgets/listview.dart';
 import 'package:widgets_example/widgets/section.dart';
 import 'package:widgets_example/widgets/text.dart';
+
+import 'draggable_scroll_sheet_screen.dart';
+import 'widgets/arrow_painter.dart';
 
 class InteractionModelScreen extends TitleWidget {
   const InteractionModelScreen({Key? key}) : super(key: key);
@@ -19,37 +23,45 @@ class InteractionModelScreen extends TitleWidget {
 
 class _InteractionModelScreenState extends State<InteractionModelScreen>
     with TickerProviderStateMixin {
-  final Map<int, String> _deletedItems = {};
-  late Map<int, String> _dismissibleItemsMap;
+  // dismissible
+  final Map<int, String> _dismissibleDeleted = {};
+  final Map<int, String> _dismissibleItemsMap =
+      Map.fromIterables(List.generate(11, (index) => index), [
+    'познакомимся?',
+    'как настроение?',
+    'ты классный!!',
+    'я Ксюша',
+    'привет',
+    'не удаляй меня пожалуйста!!',
+    'я хороший я хороший',
+    'абрикос',
+    'помнишь колобка? он мой друг',
+    'ты подумай',
+    'я все знаю.',
+  ]);
 
-  @override
-  void initState() {
-    _dismissibleItemsMap =
-        Map.fromIterables(List.generate(11, (index) => index), [
-      'познакомимся?',
-      'как настроение?',
-      'ты классный!!',
-      'я Ксюша',
-      'привет',
-      'не удаляй меня пожалуйста!!',
-      'я хороший я хороший',
-      'абрикос',
-      'помнишь колобка? он мой друг',
-      'ты подумай',
-      'я все знаю.',
-    ]);
-    super.initState();
-  }
+  // draggable
+  int _draggableListLength = 0;
+  Color? _draggableColor;
+  final List<String> _draggableList = [];
+  final ScrollController _scrollController = ScrollController();
+  final String _draggableText =
+      'на самом деле если говорить откровенно я очень сильно люблю и обожаю всей душой карбонару !!!';
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return AppListView(
+      controller: _scrollController,
       children: [
         _annotation,
         _absorbPointer,
         _absorbPointerExample,
         _dismissible,
-        _dismissibleExample
+        _dismissibleExample,
+        _draggable,
+        _draggableExample,
+        _draggableScrollableSheet,
+        _draggableScrollableSheetExample
       ],
     );
   }
@@ -194,14 +206,14 @@ class _InteractionModelScreenState extends State<InteractionModelScreen>
       );
 
   void _onRestorePressed() {
-    if (_deletedItems.isNotEmpty) {
-      var index = _deletedItems.keys.last;
+    if (_dismissibleDeleted.isNotEmpty) {
+      var index = _dismissibleDeleted.keys.last;
       setState(() {
-        _dismissibleItemsMap.addAll({index: _deletedItems.values.last});
+        _dismissibleItemsMap.addAll({index: _dismissibleDeleted.values.last});
       });
       Future.delayed(const Duration(milliseconds: 100)).then((_) {
         setState(() {
-          _deletedItems.remove(index);
+          _dismissibleDeleted.remove(index);
         });
       });
     } else {
@@ -211,20 +223,135 @@ class _InteractionModelScreenState extends State<InteractionModelScreen>
 
   _onDismissed(DismissDirection direction, mapEntry) {
     setState(() {
-      _deletedItems.addAll({mapEntry.key: mapEntry.value});
+      _dismissibleDeleted.addAll({mapEntry.key: mapEntry.value});
       _dismissibleItemsMap.remove(mapEntry.key);
     });
   }
 
   _returnedDecoration(key) => BoxDecoration(
-        boxShadow:
-            _deletedItems.values.isNotEmpty && _deletedItems.keys.last == key
-                ? [BoxShadow(color: purple800, blurRadius: 3, spreadRadius: 2)]
-                : null,
+        boxShadow: _dismissibleDeleted.values.isNotEmpty &&
+                _dismissibleDeleted.keys.last == key
+            ? [BoxShadow(color: purple800, blurRadius: 3, spreadRadius: 2)]
+            : null,
         color: const Color(0xFFEDDDEF),
       );
 
   SplayTreeMap<int, String> _sortMap(Map<int, String> map) {
     return SplayTreeMap<int, String>.from(map, (a, b) => a.compareTo(b));
   }
+
+  get _draggable => const AppHeadlineSection(
+      title: 'Draggable',
+      description:
+          'Виджет, который можно перетащить к цели DragTarget. \n\n Когда перетаскиваемый виджет распознает начало жеста перетаскивания, он отображает виджет обратной связи, который отслеживает перемещение пальца пользователя по экрану. Если пользователь поднимает палец, находясь над целью перетаскивания, этой цели предоставляется возможность принять данные, переносимые перетаскиваемым объектом.');
+
+  get _draggableExample {
+    List<Widget> _column =
+        _draggableList.map<Widget>((e) => AppText(value: e)).toList();
+    _column.addAll([
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Draggable<int>(
+            data: 1,
+            feedback: _draggableElement(
+                size: 50.0,
+                color: purple900,
+                border: Border.all(color: purple900)),
+            childWhenDragging: _draggableElement(
+                color: white, border: Border.all(color: purple900)),
+            child: _draggableElement(color: purple900),
+          ),
+          Expanded(
+              child: Column(
+            children: [
+              const AppText(
+                value: 'Перетащите левый кружок к правому',
+              ),
+              CustomPaint(
+                size: const Size(200, 50),
+                painter: ArrowPainter(),
+              ),
+            ],
+          )),
+          DragTarget<int>(
+            onMove: (_) {
+              setState(() {
+                _draggableColor ??= purple900;
+              });
+            },
+            onAcceptWithDetails: (_) {
+              setState(() {
+                _draggableColor = null;
+              });
+            },
+            onLeave: (_) {
+              setState(() {
+                _draggableColor = null;
+              });
+            },
+            builder: (
+              BuildContext context,
+              List<dynamic> accepted,
+              List<dynamic> rejected,
+            ) {
+              return _draggableElement(
+                  color: _draggableColor != null
+                      ? _draggableColor!
+                      : Colors.purple.shade300);
+            },
+            onAccept: (int value) {
+              setState(() {
+                _draggableListLength += value;
+                if (_draggableListLength <= _draggableText.split(' ').length) {
+                  _draggableList
+                      .add(_draggableText.split(' ')[_draggableListLength - 1]);
+                } else {
+                  _draggableList.clear();
+                  _draggableListLength = 0;
+                }
+              });
+              if (_draggableList.isNotEmpty) {
+                _scrollController.animateTo(
+                    _scrollController.position.maxScrollExtent + 20,
+                    curve: Curves.ease,
+                    duration: const Duration(milliseconds: 300));
+              }
+            },
+          ),
+        ],
+      ),
+    ]);
+    return AppSection(child: Column(children: _column));
+  }
+
+  _draggableElement(
+          {double size = 100, required Color color, Border? border}) =>
+      Container(
+        height: size,
+        width: size,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(size)),
+            color: color,
+            border: border),
+      );
+
+  get _draggableScrollableSheet => const AppHeadlineSection(
+      title: 'DraggableScrollSheet',
+      description:
+          'Контейнер для Scrollable, который реагирует на жесты перетаскивания, изменяя размер прокручиваемого объекта до достижения предела, а затем прокручивая его.');
+
+  get _draggableScrollableSheetExample => AppSection(
+        child: OutlinedButton(
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const DraggableScrollSheetScreen()));
+          },
+          child: const AppText(
+            value: 'Перейти на страницу с DraggableScrollableSheet',
+          ),
+        ),
+      );
 }

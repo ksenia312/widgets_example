@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_example/widgets/text.dart';
-import '../widgets/section.dart';
-import '../utils/title_widget.dart';
+import '../../widgets/section.dart';
+import '../../utils/title_widget.dart';
 
 class AccessibilityScreen extends TitleWidget {
   @override

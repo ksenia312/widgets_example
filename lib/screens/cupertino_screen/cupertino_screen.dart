@@ -2,8 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:widgets_example/utils/colors.dart';
 import 'package:widgets_example/utils/title_widget.dart';
+import 'package:widgets_example/widgets/listview.dart';
 import 'package:widgets_example/widgets/section.dart';
 import 'package:widgets_example/widgets/text.dart';
+
+import 'cupertino_navigation_bar_screen.dart';
 
 class CupertinoScreen extends TitleWidget {
   const CupertinoScreen({Key? key}) : super(key: key);
@@ -20,7 +23,7 @@ class _CupertinoState extends State<CupertinoScreen> {
   Widget build(BuildContext context) {
     return Container(
       color: white,
-      child: ListView(
+      child: AppListView(
         children: [
           _annotation,
           _cupertinoActionSheet,
@@ -293,22 +296,7 @@ class _CupertinoState extends State<CupertinoScreen> {
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => CupertinoPageScaffold(
-                    navigationBar: CupertinoNavigationBar(
-                      // Try removing opacity to observe the lack of a blur effect and of sliding content.
-                      backgroundColor:
-                          CupertinoColors.systemGrey.withOpacity(0.5),
-                      middle: const Text('Я бар'),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        AppHeadlineSection(
-                            title: 'Тут есть бар в стиле IOS',
-                            description: 'как дела'),
-                      ],
-                    ),
-                  ),
+                  builder: (context) => CupertinoNavigationBarScreen(),
                 ),
               );
             }),

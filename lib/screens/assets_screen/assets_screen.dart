@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_example/utils/colors.dart';
 import 'package:widgets_example/utils/title_widget.dart';
+import 'package:widgets_example/widgets/listview.dart';
 import 'package:widgets_example/widgets/section.dart';
 
 import 'dart:convert' show json;
@@ -20,7 +21,7 @@ class AssetsScreen extends TitleWidget {
 class _AssetsState extends State<AssetsScreen> {
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return AppListView(
       children: [
         _assetBundle,
         _assetBundleExample,

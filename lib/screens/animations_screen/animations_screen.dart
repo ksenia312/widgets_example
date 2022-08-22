@@ -3,10 +3,14 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:widgets_example/utils/colors.dart';
 import 'package:widgets_example/utils/title_widget.dart';
+import 'package:widgets_example/widgets/listview.dart';
 import 'package:widgets_example/widgets/section.dart';
 import 'package:widgets_example/widgets/text.dart';
 
+import 'hero_screen.dart';
+
 class AnimationsScreen extends TitleWidget {
+
   @override
   String get title => 'Animations';
 
@@ -16,7 +20,8 @@ class AnimationsScreen extends TitleWidget {
   State<AnimationsScreen> createState() => _AnimationsState();
 }
 
-class _AnimationsState extends State<AnimationsScreen> with TickerProviderStateMixin {
+class _AnimationsState extends State<AnimationsScreen>
+    with TickerProviderStateMixin {
   int _animatedAlignPosition = 0;
   bool _animatedCrossFadeFirst = true;
   bool _animatedModalBarrierShow = false;
@@ -59,9 +64,8 @@ class _AnimationsState extends State<AnimationsScreen> with TickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return AppListView(
       children: [
-        _annotation,
         _animatedAlign,
         _animatedAlignExample,
         _animatedCrossFade,
@@ -80,10 +84,6 @@ class _AnimationsState extends State<AnimationsScreen> with TickerProviderStateM
       ],
     );
   }
-
-  get _annotation => const AppSection(
-        child: AppText(value: 'Только анимации, которые я редко использовала'),
-      );
 
   get _animatedAlign => const AppHeadlineSection(
       title: 'AnimatedAlign',
@@ -409,36 +409,8 @@ class _AnimationsState extends State<AnimationsScreen> with TickerProviderStateM
   void _gotoDetailsPage(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute<void>(
-        builder: (BuildContext context) => Scaffold(
-          appBar: AppBar(
-            centerTitle: false,
-            title: const AppText(
-              value: 'Описание колобка',
-              dark: false,
-              textType: TextType.large,
-            ),
-          ),
-          body: Center(
-            child: SizedBox(
-              height: 300,
-              child: AppSection(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Hero(
-                      tag: 'hero-rectangle',
-                      child: _circle(const Size(200, 200)),
-                    ),
-                    const AppText(
-                      value: 'я колобок',
-                      textType: TextType.large,
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
+        builder: (BuildContext context) =>
+            HeroScreen(heroChild: _circle(const Size(200, 200))),
       ),
     );
   }
