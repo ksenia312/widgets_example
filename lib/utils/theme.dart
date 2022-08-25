@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import 'colors.dart';
@@ -6,7 +5,7 @@ import 'colors.dart';
 class AppTheme {
   static ThemeData get data => ThemeData(
         brightness: Brightness.light,
-        scaffoldBackgroundColor:scaffold,
+        scaffoldBackgroundColor: scaffold,
         textTheme: TextTheme(
           bodySmall: TextStyle(
               color: purple900, fontSize: 12, fontWeight: FontWeight.w500),
@@ -22,14 +21,13 @@ class AppTheme {
               side: MaterialStateProperty.all<BorderSide?>(
                   BorderSide(color: purple900))),
         ),
-        appBarTheme:  const AppBarTheme(
+        appBarTheme: const AppBarTheme(
             toolbarHeight: 70,
             backgroundColor: surface,
             foregroundColor: white,
             iconTheme: IconThemeData(color: white),
             elevation: 10,
-            shadowColor: Colors.black,
-            centerTitle: true),
+            shadowColor: Colors.black),
         //backgroundColor: const Color(0xFF49225D),
       );
 }

@@ -10,7 +10,6 @@ class HeroScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: false,
         title: const AppText(
           value: 'Описание колобка',
           dark: false,

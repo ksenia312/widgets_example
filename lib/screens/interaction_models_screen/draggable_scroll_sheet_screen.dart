@@ -19,7 +19,6 @@ class _DraggableScrollSheetScreenState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: false,
         title: const AppText(
           value: 'DraggableScrollableSheet',
           textType: TextType.large,

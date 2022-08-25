@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:widgets_example/utils/colors.dart';
 import 'package:widgets_example/utils/messenger.dart';
 import 'package:widgets_example/utils/title_widget.dart';
+import 'package:widgets_example/widgets/arrow_painter.dart';
 import 'package:widgets_example/widgets/listview.dart';
 import 'package:widgets_example/widgets/section.dart';
 import 'package:widgets_example/widgets/text.dart';
 
 import 'draggable_scroll_sheet_screen.dart';
-import 'widgets/arrow_painter.dart';
 
 class InteractionModelScreen extends TitleWidget {
   const InteractionModelScreen({Key? key}) : super(key: key);

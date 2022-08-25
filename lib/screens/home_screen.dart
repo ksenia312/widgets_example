@@ -10,6 +10,8 @@ import 'assets_screen/assets_screen.dart';
 import 'basics_screen/basics_screen.dart';
 import 'input_screen/input_screen.dart';
 import 'layout_screen/layout_screen.dart';
+import 'material_components_screen/material_components_screen.dart';
+import 'painting_screen/painting_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -39,7 +41,9 @@ class _HomeScreenState extends State<HomeScreen> {
       const CupertinoScreen(),
       const InputScreen(),
       const InteractionModelScreen(),
-     /* const LayoutScreen()*/
+      const LayoutScreen(),
+      const MaterialComponentsScreen(),
+      const PaintingScreen()
     ];
     return Scaffold(
       appBar: AppBar(

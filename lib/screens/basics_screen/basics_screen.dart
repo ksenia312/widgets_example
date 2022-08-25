@@ -85,7 +85,7 @@ class _BasicsState extends State<BasicsScreen> {
                           'Я внутри Expanded контейнера с flex=2. Я автоматически заполняю в 2 раза больше пространства, чем доступно автоматически заполнить остальным (при равном распределении контента)',
                     ),
                   ))),
-          _redirectButton()
+          _redirectButton
         ],
       );
 

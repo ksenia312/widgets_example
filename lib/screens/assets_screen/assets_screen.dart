@@ -165,7 +165,7 @@ class _AssetsState extends State<AssetsScreen> {
               'Image.asset("assets/crocodile.jpg")'),
           _imageRow(
               Image.network(
-                  "https://www.supersadovnik.ru/binfiles/images/20210622/m8bcfafe.jpg"),
+                  "https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg"),
               'Image.network(%URL%)'),
         ],
       ),
