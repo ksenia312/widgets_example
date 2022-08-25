@@ -309,11 +309,9 @@ class _LayoutScreenState extends State<LayoutScreen> {
           child: ConstrainedBox(
             constraints: BoxConstraints(
                 minHeight: height,
-                minWidth: width,
-                maxWidth: width,
-                maxHeight: height),
+                minWidth: width),
             child: Image.network(
-              'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
+              'https://static10.tgstat.ru/channels/_0/7e/7ed35fe88e5d84da058e9d3f911f1cdf.jpg',
             ),
           ),
         ),

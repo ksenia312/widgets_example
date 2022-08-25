@@ -182,7 +182,21 @@ class _AssetsState extends State<AssetsScreen> {
                   textType: TextType.code,
                 ),
               )),
-          Expanded(child: Center(child: image)),
+          SizedBox(
+            height: 100,
+            width: 100,
+            child: FittedBox(
+              fit: BoxFit.cover,
+              clipBehavior: Clip.hardEdge,
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(
+                  minHeight: 100,
+                  minWidth: 100,
+                ),
+                child: image,
+              ),
+            ),
+          ),
         ],
       );
 }
