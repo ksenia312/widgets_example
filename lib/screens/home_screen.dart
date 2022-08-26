@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_example/screens/cupertino_screen/cupertino_screen.dart';
 import 'package:widgets_example/screens/interaction_models_screen/interaction_models_screen.dart';
+import 'package:widgets_example/screens/scrolling_screen/scrolling_screen.dart';
 import 'package:widgets_example/utils/colors.dart';
 import 'package:widgets_example/utils/title_widget.dart';
 
@@ -43,7 +44,8 @@ class _HomeScreenState extends State<HomeScreen> {
       const InteractionModelScreen(),
       const LayoutScreen(),
       const MaterialComponentsScreen(),
-      const PaintingScreen()
+      const PaintingScreen(),
+      const ScrollingScreen()
     ];
     return Scaffold(
       appBar: AppBar(

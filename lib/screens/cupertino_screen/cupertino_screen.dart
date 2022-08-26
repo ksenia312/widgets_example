@@ -296,7 +296,7 @@ class _CupertinoState extends State<CupertinoScreen> {
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => CupertinoNavigationBarScreen(),
+                  builder: (context) => const CupertinoNavigationBarScreen(),
                 ),
               );
             }),

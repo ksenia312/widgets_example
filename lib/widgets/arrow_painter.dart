@@ -2,12 +2,15 @@ import 'package:arrow_path/arrow_path.dart';
 import 'package:flutter/material.dart';
 import 'package:widgets_example/utils/colors.dart';
 
-
 class ArrowPainter extends CustomPainter {
+  final bool dark;
+
+  ArrowPainter({this.dark = true});
+
   @override
   void paint(Canvas canvas, Size size) {
     final Paint paint = Paint()
-      ..color = purple800
+      ..color = dark ? purple900 : white
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round
       ..strokeJoin = StrokeJoin.round
