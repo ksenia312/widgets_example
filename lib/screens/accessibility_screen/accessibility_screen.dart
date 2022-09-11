@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_example/widgets/text.dart';
 import '../../widgets/section.dart';
-import '../../utils/title_widget.dart';
 
-class AccessibilityScreen extends TitleWidget {
-  @override
-  String get title => 'Accessibility';
+class AccessibilityScreen extends StatefulWidget {
 
   const AccessibilityScreen({Key? key}) : super(key: key);
 

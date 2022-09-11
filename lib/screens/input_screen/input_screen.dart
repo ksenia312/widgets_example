@@ -2,16 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:widgets_example/widgets/listview.dart';
 import 'package:widgets_example/widgets/text_field.dart';
-import 'package:widgets_example/utils/title_widget.dart';
 import 'package:widgets_example/utils/messenger.dart';
 import 'package:widgets_example/widgets/section.dart';
 import 'package:widgets_example/widgets/text.dart';
 
-class InputScreen extends TitleWidget {
+class InputScreen extends StatefulWidget {
   const InputScreen({Key? key}) : super(key: key);
-
-  @override
-  get title => 'Input';
 
   @override
   State<InputScreen> createState() => _InputState();

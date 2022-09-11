@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_example/utils/colors.dart';
-import 'package:widgets_example/utils/title_widget.dart';
 import 'package:widgets_example/widgets/listview.dart';
 import 'package:widgets_example/widgets/section.dart';
 import 'package:widgets_example/widgets/text.dart';
@@ -8,11 +7,9 @@ import 'package:widgets_example/widgets/text.dart';
 import 'sliver_appbar_screen.dart';
 import 'tab_bar_screen.dart';
 
-class MaterialComponentsScreen extends TitleWidget {
+class MaterialComponentsScreen extends StatefulWidget {
   const MaterialComponentsScreen({Key? key}) : super(key: key);
 
-  @override
-  get title => 'Material Components';
 
   @override
   State<MaterialComponentsScreen> createState() =>

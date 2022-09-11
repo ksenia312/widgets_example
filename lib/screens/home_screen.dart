@@ -3,7 +3,6 @@ import 'package:widgets_example/screens/cupertino_screen/cupertino_screen.dart';
 import 'package:widgets_example/screens/interaction_models_screen/interaction_models_screen.dart';
 import 'package:widgets_example/screens/scrolling_screen/scrolling_screen.dart';
 import 'package:widgets_example/utils/colors.dart';
-import 'package:widgets_example/utils/title_widget.dart';
 
 import 'animations_screen/animations_screen.dart';
 import 'annotation_screen/annotation_screen.dart';
@@ -23,6 +22,19 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int? _screenIndex = 0;
+  static const List<String> _screensNames = [
+    'Annotation',
+    'Basics',
+    'Animations',
+    'Assets & Images & Icons',
+    'Cupertino',
+    'Input',
+    'Interaction models',
+    'Layout',
+    'Material Components',
+    'Painting & effect',
+    'Scrolling'
+  ];
 
   void _onChanged(int? value) {
     setState(() {
@@ -34,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final List<TitleWidget> _screens = [
+    final List<Widget> _screens = [
       AnnotationScreen(setDropDownValue: setDropDownValue),
       const BasicsScreen(),
       const AnimationsScreen(),
@@ -47,6 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
       const PaintingScreen(),
       const ScrollingScreen()
     ];
+
     return Scaffold(
       appBar: AppBar(
         title: Container(
@@ -91,9 +104,9 @@ class _HomeScreenState extends State<HomeScreen> {
         color: purple900,
       );
 
-  _getItems(List<TitleWidget> screens) => screens
+  _getItems(List<Widget> screens) => screens
       .map((e) => DropdownMenuItem<int>(
-            child: Text(e.title),
+            child: Text(_screensNames.elementAt(screens.indexOf(e))),
             value: screens.indexOf(e),
             alignment: Alignment.center,
           ))

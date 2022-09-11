@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:widgets_example/utils/colors.dart';
-import 'package:widgets_example/utils/title_widget.dart';
 import 'package:widgets_example/widgets/section.dart';
 import 'package:widgets_example/widgets/text.dart';
 
-class AnnotationScreen extends TitleWidget {
+class AnnotationScreen extends StatefulWidget {
   final Function(int) setDropDownValue;
 
   const AnnotationScreen({Key? key, required this.setDropDownValue})
       : super(key: key);
 
-  @override
-  get title => 'Annotation';
 
   @override
   State<AnnotationScreen> createState() => _AnnotationScreenState();

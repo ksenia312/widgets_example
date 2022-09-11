@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_example/utils/colors.dart';
-import 'package:widgets_example/utils/title_widget.dart';
 import 'package:widgets_example/widgets/listview.dart';
 import 'package:widgets_example/widgets/section.dart';
 
@@ -8,11 +7,9 @@ import 'dart:convert' show json;
 
 import 'package:widgets_example/widgets/text.dart';
 
-class AssetsScreen extends TitleWidget {
+class AssetsScreen extends StatefulWidget {
   const AssetsScreen({Key? key}) : super(key: key);
 
-  @override
-  String get title => 'Assets & Images & Icons';
 
   @override
   State<AssetsScreen> createState() => _AssetsState();

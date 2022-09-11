@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_example/utils/colors.dart';
-import 'package:widgets_example/utils/title_widget.dart';
 import 'package:widgets_example/widgets/listview.dart';
 import 'package:widgets_example/widgets/section.dart';
 import 'package:widgets_example/widgets/text.dart';
 
-class BasicsScreen extends TitleWidget {
-  @override
-  String get title => 'Basics';
-
+class BasicsScreen extends StatefulWidget {
   const BasicsScreen({Key? key}) : super(key: key);
 
   @override

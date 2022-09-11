@@ -3,17 +3,13 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:widgets_example/screens/layout_screen/widgets/flow_menu.dart';
 import 'package:widgets_example/utils/colors.dart';
-import 'package:widgets_example/utils/title_widget.dart';
 import 'package:widgets_example/widgets/arrow_painter.dart';
 import 'package:widgets_example/widgets/listview.dart';
 import 'package:widgets_example/widgets/section.dart';
 import 'package:widgets_example/widgets/text.dart';
 
-class LayoutScreen extends TitleWidget {
+class LayoutScreen extends StatefulWidget {
   const LayoutScreen({Key? key}) : super(key: key);
-
-  @override
-  get title => 'Layout';
 
   @override
   State<LayoutScreen> createState() => _LayoutScreenState();

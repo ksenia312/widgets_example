@@ -2,18 +2,13 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:widgets_example/utils/colors.dart';
-import 'package:widgets_example/utils/title_widget.dart';
 import 'package:widgets_example/widgets/listview.dart';
 import 'package:widgets_example/widgets/section.dart';
 import 'package:widgets_example/widgets/text.dart';
 
 import 'hero_screen.dart';
 
-class AnimationsScreen extends TitleWidget {
-
-  @override
-  String get title => 'Animations';
-
+class AnimationsScreen extends StatefulWidget {
   const AnimationsScreen({Key? key}) : super(key: key);
 
   @override

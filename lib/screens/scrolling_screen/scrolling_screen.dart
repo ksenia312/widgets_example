@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:widgets_example/utils/colors.dart';
-import 'package:widgets_example/utils/title_widget.dart';
 import 'package:widgets_example/widgets/arrow_painter.dart';
 import 'package:widgets_example/widgets/listview.dart';
 import 'package:widgets_example/widgets/section.dart';
@@ -11,11 +10,9 @@ import 'package:widgets_example/widgets/text.dart';
 import 'custom_scroll_view_screen.dart';
 import 'refresh_indicator_screen.dart';
 
-class ScrollingScreen extends TitleWidget {
+class ScrollingScreen extends StatefulWidget {
   const ScrollingScreen({Key? key}) : super(key: key);
 
-  @override
-  get title => 'Scrolling';
 
   @override
   State<ScrollingScreen> createState() => _ScrollingScreenState();

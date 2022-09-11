@@ -2,17 +2,13 @@ import 'dart:math';
 import "dart:ui";
 import 'package:flutter/material.dart';
 import 'package:widgets_example/utils/colors.dart';
-import 'package:widgets_example/utils/title_widget.dart';
 import 'package:widgets_example/widgets/arrow_painter.dart';
 import 'package:widgets_example/widgets/listview.dart';
 import 'package:widgets_example/widgets/section.dart';
 import 'package:widgets_example/widgets/text.dart';
 
-class PaintingScreen extends TitleWidget {
+class PaintingScreen extends StatefulWidget {
   const PaintingScreen({Key? key}) : super(key: key);
-
-  @override
-  get title => 'Painting & effect ';
 
   @override
   State<PaintingScreen> createState() => _PaintingsScreenState();

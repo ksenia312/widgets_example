@@ -1,18 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:widgets_example/utils/colors.dart';
-import 'package:widgets_example/utils/title_widget.dart';
 import 'package:widgets_example/widgets/listview.dart';
 import 'package:widgets_example/widgets/section.dart';
 import 'package:widgets_example/widgets/text.dart';
 
 import 'cupertino_navigation_bar_screen.dart';
 
-class CupertinoScreen extends TitleWidget {
+class CupertinoScreen extends StatefulWidget {
   const CupertinoScreen({Key? key}) : super(key: key);
-
-  @override
-  String get title => 'Cupertino';
 
   @override
   State<CupertinoScreen> createState() => _CupertinoState();

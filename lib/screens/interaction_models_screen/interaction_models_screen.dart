@@ -3,7 +3,6 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:widgets_example/utils/colors.dart';
 import 'package:widgets_example/utils/messenger.dart';
-import 'package:widgets_example/utils/title_widget.dart';
 import 'package:widgets_example/widgets/arrow_painter.dart';
 import 'package:widgets_example/widgets/listview.dart';
 import 'package:widgets_example/widgets/section.dart';
@@ -11,11 +10,8 @@ import 'package:widgets_example/widgets/text.dart';
 
 import 'draggable_scroll_sheet_screen.dart';
 
-class InteractionModelScreen extends TitleWidget {
+class InteractionModelScreen extends StatefulWidget {
   const InteractionModelScreen({Key? key}) : super(key: key);
-
-  @override
-  get title => 'Interaction models';
 
   @override
   State<InteractionModelScreen> createState() => _InteractionModelScreenState();
@@ -87,10 +83,12 @@ class _InteractionModelScreenState extends State<InteractionModelScreen>
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _drawFigure(isAbsorb: true),
-                _drawFigure(isAbsorb: false),
+                Expanded(child: _drawFigure(isAbsorb: true)),
+                const SizedBox(
+                  width: 10,
+                ),
+                Expanded(child: _drawFigure(isAbsorb: false)),
               ],
             ),
           )
@@ -113,33 +111,32 @@ class _InteractionModelScreenState extends State<InteractionModelScreen>
       ),
     );
     return ConstrainedBox(
-      constraints: const BoxConstraints.tightForFinite(height: 160),
-      child: Stack(
-        alignment: AlignmentDirectional.topCenter,
-        children: <Widget>[
-          SizedBox(
-            width: 150.0,
-            height: 50.0,
-            child: ElevatedButton(
-              onPressed: () {},
-              child: null,
-            ),
-          ),
-          isAbsorb
-              ? AbsorbPointer(
-                  child: foregroundButton,
-                )
-              : foregroundButton,
-          Positioned(
-              top: 60,
-              child: ConstrainedBox(
-                constraints: const BoxConstraints.tightForFinite(width: 150),
-                child: AppText(
-                  value: isAbsorb
-                      ? "нажатие на верхнюю кнопку заблокировано absorb'ом"
-                      : "на верхнюю кнопку можно нажать и увидеть анимацию, хоть и onPressed - пустой",
+      constraints: const BoxConstraints(minHeight: 150),
+      child: Column(
+        children: [
+          Stack(
+            alignment: AlignmentDirectional.topCenter,
+            children: <Widget>[
+              SizedBox(
+                width: 150.0,
+                height: 50.0,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: null,
                 ),
-              ))
+              ),
+              isAbsorb
+                  ? AbsorbPointer(
+                      child: foregroundButton,
+                    )
+                  : foregroundButton,
+            ],
+          ),
+          AppText(
+            value: isAbsorb
+                ? "нажатие на верхнюю кнопку заблокировано absorb'ом"
+                : "на верхнюю кнопку можно нажать и увидеть анимацию, хоть и onPressed - пустой",
+          )
         ],
       ),
     );
