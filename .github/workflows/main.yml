@@ -1,5 +1,7 @@
 on:
   push:
+    tags:
+      - release-v*
 
 name: Release App
 jobs:
